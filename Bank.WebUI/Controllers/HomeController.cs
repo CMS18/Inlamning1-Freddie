@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Bank.WebUI.Models;
+using Bank.WebUI.Models.ViewModels;
 
 namespace Bank.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly BankRepository _repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(BankRepository repo)
         {
-            _logger = logger;
+            _repo = repo;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var vm = new CustomerAccountViewModel
+            {
+                Accounts = _repo.Accounts,
+                Customers = _repo.Customers
+            };
+
+            return View(vm);
         }
 
         public IActionResult Privacy()
