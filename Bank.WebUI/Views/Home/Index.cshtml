@@ -8,7 +8,7 @@
     @foreach (var customer in Model.Customers)
     {
         <div class="customers" style="width: 60%; margin: auto">
-            <p>Kundid: @customer.CustomerId</p>
+            <p style="margin: 0">Kundid: @customer.CustomerId</p>
             <h2>@customer.Name</h2>
             @foreach (var acc in Model.Accounts)
             {

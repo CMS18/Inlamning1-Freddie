@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Transfer";
+}
+<form asp-controller="Account" method="post">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td><label>Account number</label></td>
+                <td>
+                    <Input name="accountID" /><br />
+                </td>
+            </tr>
+            <tr>
+                <td><label>Amount:</label></td>
+                <td>
+                    <Input name="amount" /><br />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input asp-action="Withdraw" type="submit" value="Withdraw" />
+    <input asp-action="Deposit" type="submit" value="Deposit" />
+</form>
+
+@TempData["info"]
