@@ -21,5 +21,29 @@ namespace Bank.WebUI.Models
             Accounts.Add(new Account { CustomerId = 2, AccountId = 7134, Balance = 10000m });
             Accounts.Add(new Account { CustomerId = 3, AccountId = 2537, Balance = 5000m });
         }
+
+        public void Withdraw(Account account, decimal withdraw)
+        {
+            if (account.Balance >= withdraw && withdraw > 0)
+            {
+                account.Balance -= withdraw;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void Deposit(Account account, decimal deposit)
+        {
+            if (0 < deposit)
+            {
+                account.Balance += deposit;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
