@@ -40,6 +40,10 @@ namespace Bank.WebUI.Controllers
                     return View();
                 }
                 
+            } else
+            {
+                TempData["Error"] = "Incorrect account number specified";
+                return View();
             }
 
             TempData["Success"] = $"Transfer completed sucessfully. Sender balance is now: {sender.Balance}. Recipient balance is now {recipient.Balance}";
