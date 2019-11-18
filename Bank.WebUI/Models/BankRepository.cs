@@ -45,5 +45,25 @@ namespace Bank.WebUI.Models
                 throw new ArgumentOutOfRangeException();
             }
         }
+
+        public void Transfer(Account sender, Account reciever, decimal amount)
+        {
+            if(amount > 0M)
+            {
+                if(amount <= sender.Balance)
+                {
+                    sender.Balance -= amount;
+                    reciever.Balance += amount;
+                } 
+                else
+                {
+                    throw new TransferNotAllowedException("Amount exceeds senders current balance");
+                }
+            } 
+            else
+            {
+                throw new TransferNotAllowedException("Amount cannot be negative or zero");
+            }
+        }
     }
 }
